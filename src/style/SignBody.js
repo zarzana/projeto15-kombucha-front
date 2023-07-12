@@ -1,6 +1,15 @@
 import { styled } from "styled-components";
 
 export const SignBody = styled.div`
+  font-family: 'Lexend Deca', sans-serif;
+  div{
+    cursor: pointer;
+    position: fixed;
+    margin-top: 380px;
+    color: gray;
+    font-size: 20px;
+    font-weight: 500;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +22,6 @@ export const SignBody = styled.div`
     row-gap: 6px;
   }
   input{
-    font-family: 'Lexend Deca', sans-serif;
     padding-left: 11px;
     user-select: text;
     width: 303px;
@@ -34,7 +42,6 @@ export const SignBody = styled.div`
         }
   }
   button{
-    font-family: 'Lexend Deca', sans-serif;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -58,7 +65,6 @@ export const SignBody = styled.div`
     }
   }
   p{
-    font-family: 'Lexend Deca', sans-serif;
     cursor: pointer;
     margin-top: 25px;
     font-size: 14px;
