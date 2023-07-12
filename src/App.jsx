@@ -41,7 +41,7 @@ function App() {
     }}>
       <Routes>
         <Route path="/" element={ <SignInPage/> }/>
-        <Route path="/cadastro" element={<SignUpPage/>}/>
+        <Route path="/cadastro" element={ <SignUpPage/> }/>
         <Route path="/produtos" element={ <ProductsPage/> }/>
       </Routes>
     </UserContext.Provider>
