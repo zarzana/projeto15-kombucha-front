@@ -4,6 +4,7 @@ import { UserContext } from "./contexts/userContext";
 import ProductsPage from "./pages/ProductsPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
+import CartPage from "./pages/CartPage";
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
         <Route path="/" element={ <SignInPage/> }/>
         <Route path="/cadastro" element={ <SignUpPage/> }/>
         <Route path="/produtos" element={ <ProductsPage/> }/>
+        <Route path="/carrinho" element={ <CartPage/> }/>
       </Routes>
     </UserContext.Provider>
   );
