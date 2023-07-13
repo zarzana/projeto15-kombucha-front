@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { ProductsContext } from "./contexts/productsContext";
 import { UserContext } from "./contexts/userContext";
 import CartPage from "./pages/CartPage";
 import ProductPage from "./pages/ProductPage";
@@ -10,6 +11,8 @@ import SignUpPage from "./pages/SignUpPage";
 function App() {
 
   const navigate = useNavigate();
+
+  const [cartProducts, setCartProducts] = useState([]);
 
   const [loginData, setLoginData] = useState({});
   const { token, name } = loginData;
@@ -37,6 +40,7 @@ function App() {
       config: !storedConfig.current ? config : storedConfig.current,
       name: !storedName.current ? name : storedName.current
     }}>
+    <ProductsContext.Provider value={{cartProducts, setCartProducts}}>
       <Routes>
         <Route path="/" element={ <ProductsPage/> }/>
         <Route path="/:id" element={ <ProductPage/> }/>
@@ -44,6 +48,7 @@ function App() {
         <Route path="/cadastro" element={ <SignUpPage/> }/>
         <Route path="/carrinho" element={ <CartPage/> }/>
       </Routes>
+    </ProductsContext.Provider>
     </UserContext.Provider>
   );
 }

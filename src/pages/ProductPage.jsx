@@ -1,12 +1,20 @@
+import axios from "axios";
+import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { ProductsContext } from "../contexts/productsContext";
+import { UserContext } from "../contexts/userContext";
+import { addToCart } from "../functions/addToCart";
 import { ProductPageBody } from "../style/ProductPageBody";
 import { AddRmCart } from "../style/ProductsPageBody";
 
 const ProductPage = () => {
-  const { product, cartProducts } = useLocation().state;
+  const { product } = useLocation().state;
   const { _id, title, description, price, stock, imgUrl } = product;
 
   const navigate = useNavigate();
+
+  const { name, config } = useContext(UserContext);
+  const { cartProducts, setCartProducts } = useContext(ProductsContext);
 
   const isInCart = cartProducts.some(product => product._id === _id);
 
@@ -25,7 +33,7 @@ const ProductPage = () => {
           <hr/>
           <p>{description}</p>
           <p><span>no estoque: {stock}</span></p>
-          <button>
+          <button onClick={() => addToCart(import.meta.env.VITE_API_URL, name, config, _id, stock, isInCart, cartProducts, setCartProducts)}>
             {isInCart ? <h3>Remover do Carrinho</h3> : <h3>Adicionar ao Carrinho</h3>}
             <AddRmCart />
           </button>

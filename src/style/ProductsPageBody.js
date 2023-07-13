@@ -133,7 +133,7 @@ export const ProductsPageNavBar = styled.div`
       font-size: 20px;
       transition-duration: 400ms;
       &:hover{
-        color: #5dbb63;
+        color: white;
       }
     }
     span{
@@ -153,6 +153,10 @@ export const StyledCart = styled(PiShoppingCartFill)`
   cursor: pointer;
   color: black;
   margin-right: 5px;
+  transition-duration: 400ms;
+  &:hover{
+    color: white;
+  }
 `
 
 export const AddRmCart = styled(PiShoppingCartFill)`
@@ -165,4 +169,8 @@ export const StyledArrow = styled(FaArrowCircleLeft)`
   font-size: 26px;
   cursor: pointer;
   color: black;
+  transition-duration: 400ms;
+  &:hover{
+    color: white;
+  }
 `

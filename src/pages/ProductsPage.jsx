@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "../components/Product";
+import { ProductsContext } from "../contexts/productsContext";
 import { UserContext } from "../contexts/userContext";
 import { ProductsPageBody, ProductsPageNavBar, StyledArrow, StyledCart } from "../style/ProductsPageBody";
 
@@ -10,8 +11,9 @@ const ProductsPage = () => {
   const navigate = useNavigate();
 
   const { name , config } = useContext(UserContext);
+  const { cartProducts, setCartProducts } = useContext(ProductsContext);
 
-  const [cartProducts, setCartProducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const signOut = async () => {
     if (!confirm('Tem certeza que deseja sair?')) return;
@@ -25,8 +27,6 @@ const ProductsPage = () => {
       alert(`${status} ${statusText}\n${data}`);
     }
   };
-
-  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,7 +64,7 @@ const ProductsPage = () => {
       </ProductsPageNavBar>
       <ul>
           {products.map((product) => 
-            <ProductCard cartProducts={cartProducts} setCartProducts={setCartProducts} setProducts={setProducts} product={product} key={product._id}/>)
+            <ProductCard product={product} key={product._id}/>)
           }
       </ul>
     </ProductsPageBody>
