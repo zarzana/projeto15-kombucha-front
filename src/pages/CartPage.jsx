@@ -44,14 +44,30 @@ const CartPage = () => {
         return t
     }
 
-    function deleteProd(element){
+    async function deleteProd(element){
         let i = prods.indexOf(element)
         prods.splice(i,1)
         setProds([...prods])
+        try {
+            console.log(prods)
+            await axios.post(`${import.meta.env.VITE_API_URL}/cart`,{list:prods},config)
+        } catch ({response: {status, statusText, data}}){
+            alert(`${status} ${statusText}\n${data}`);
+        }
     }
 
     function changeQtd(){
         setProds([...prods])
+    }
+
+    async function Confirm(){
+        try {
+            console.log(prods)
+            await axios.post(`${import.meta.env.VITE_API_URL}/cart`,{list:prods},config)
+            navigate("/checkout")
+        } catch ({response: {status, statusText, data}}){
+            alert(`${status} ${statusText}\n${data}`);
+        }
     }
 
     return(
@@ -70,6 +86,7 @@ const CartPage = () => {
                     <>Total</>
                     <b>R$ {total}</b>
                 </ProductsCardHeader>
+                {!prods||prods.length==0?"":<button onClick={()=>Confirm()}>Confirm</button>}
             </ProductsCard>
         </PageBody>
     )
