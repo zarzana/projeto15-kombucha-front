@@ -40,6 +40,7 @@ function App() {
         <Route path="/" element={ <ProductsPage/> }/>
         <Route path="/entrar" element={ <SignInPage/> }/>
         <Route path="/cadastro" element={ <SignUpPage/> }/>
+        <Route path="/carrinho" element={ <CartPage/> }/>
       </Routes>
     </UserContext.Provider>
   );
