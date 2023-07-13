@@ -4,11 +4,15 @@ export const SignBody = styled.div`
   font-family: 'Lexend Deca', sans-serif;
   div{
     cursor: pointer;
-    position: fixed;
-    margin-top: 380px;
+    text-align: center;
+    margin-top: 20px;
     color: gray;
     font-size: 20px;
     font-weight: 500;
+    transition-duration: 400ms;
+    &:hover{
+      color: #5dbb63;
+    }
   }
   display: flex;
   flex-direction: column;
@@ -48,7 +52,7 @@ export const SignBody = styled.div`
     justify-content: center;
     border-radius: 5px;
     border: none;
-    background: lightgray;
+    background: #5dbb63;
     width: 303px;
     height: 45px;
     margin-bottom: 12px;
@@ -66,9 +70,8 @@ export const SignBody = styled.div`
   }
   p{
     cursor: pointer;
-    margin-top: 25px;
     font-size: 14px;
     line-height: 17px;
-    color: lightgray;
+    color: #5dbb63;
   }
 `

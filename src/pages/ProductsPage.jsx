@@ -9,7 +9,10 @@ const ProductsPage = () => {
 
   const navigate = useNavigate();
 
-  const { name , config} = useContext(UserContext);
+  const { name , config } = useContext(UserContext);
+
+  //FAZER REQUISIÇÃO GET PARA PEGAR OS PRODUTOS DO CARRINHO
+  const [cartProducts, setCartProducts] = useState([]);
 
   const signOut = async () => {
     if (!confirm('Tem certeza que deseja sair?')) return;
@@ -41,22 +44,27 @@ const ProductsPage = () => {
   return (  
     <ProductsPageBody>
       <ProductsPageNavBar>
-        {!name 
-          ?
-          <div>
-            <p onClick={() => navigate('/cadastro')}>Cadastro</p>
-            <p onClick={() => navigate('/entrar')}>Entrar</p>
-          </div>
-          :
-          <div>
-            <StyledArrow onClick={signOut}/>
-            <span>{name}</span>
-          </div>
-        }
+        <div>
+          {!name 
+            ?
+            <>
+              <p onClick={() => navigate('/cadastro')}>Cadastro</p>
+              <p onClick={() => navigate('/entrar')}>Entrar</p>
+            </>
+            :
+            <>
+              <StyledArrow onClick={signOut}/>
+              <span>{name}</span>
+            </>
+          }
+        </div>
+        <h1>{cartProducts.length}</h1>
         <StyledCart />
       </ProductsPageNavBar>
       <ul>
-          {products.map((product) => <ProductCard product={product} key={product._id}/>)}
+          {products.map((product) => 
+            <ProductCard cartProducts={cartProducts} setCartProducts={setCartProducts} setProducts={setProducts} product={product} key={product._id}/>)
+          }
       </ul>
     </ProductsPageBody>
   );
