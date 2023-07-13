@@ -19,10 +19,6 @@ function App() {
   };
 
   useEffect(() => {
-    //navega direto para a rota /produtos caso tenha uma config previa no localStorage
-    if (localStorage.getItem('config')){
-        navigate('/produtos');
-    };
     /*redefine novamente as keys no localStorage caso o loginData já tenha sido "setado" na rota /
     para não permitir que os valores no localStorage sejam redefinidos para undefined*/
     if (Object.keys(loginData).length > 0) {
@@ -41,10 +37,9 @@ function App() {
       name: !storedName.current ? name : storedName.current
     }}>
       <Routes>
-        <Route path="/" element={ <SignInPage/> }/>
+        <Route path="/" element={ <ProductsPage/> }/>
+        <Route path="/entrar" element={ <SignInPage/> }/>
         <Route path="/cadastro" element={ <SignUpPage/> }/>
-        <Route path="/produtos" element={ <ProductsPage/> }/>
-        <Route path="/carrinho" element={ <CartPage/> }/>
       </Routes>
     </UserContext.Provider>
   );

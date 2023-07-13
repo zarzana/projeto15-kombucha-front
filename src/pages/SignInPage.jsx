@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/userContext";
 import { SignBody } from "../style/SignBody";
@@ -20,11 +20,15 @@ const signInPage = () => {
     try {
       const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/sign-in`, signInInputs);
       setLoginData(data);
-      navigate('/produtos');
+      navigate('/');
     } catch ({response: {status, statusText, data}}){
       alert(`${status} ${statusText}\n${data}`);
     }
   };
+
+  useEffect(() => {
+    if (localStorage.getItem('config')) navigate('/');
+  },[])
 
   return (  
     <SignBody>
@@ -40,6 +44,7 @@ const signInPage = () => {
         <button>Entrar</button>
       </form>
       <p onClick={() => navigate('/cadastro')}>Não tem uma conta? Cadastre-se!</p>
+      <div onClick={() => navigate('/')}>Produtos</div>
     </SignBody>
   );
 };

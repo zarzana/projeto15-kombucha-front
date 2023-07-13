@@ -20,7 +20,7 @@ const SignUpPage = () => {
     try {
       await axios.post(`${import.meta.env.VITE_API_URL}/sign-up`, signUpInputs);
       alert('Conta cadastrada com sucesso');
-      navigate('/');
+      navigate('/entrar');
     } catch ({response: {status, statusText, data}}){
       alert(`${status} ${statusText}\n${data}`);
     }
@@ -47,7 +47,8 @@ const SignUpPage = () => {
         ></input>
         <button>Cadastrar</button>
       </form>
-      <p onClick={() => navigate('/')}>Já tem uma conta? Faça login!</p>
+      <p onClick={() => navigate('/entrar')}>Já tem uma conta? Faça login!</p>
+      <div onClick={() => navigate('/')}>Produtos</div>
     </SignBody>
   );
 };
