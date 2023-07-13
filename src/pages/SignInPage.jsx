@@ -44,7 +44,7 @@ const signInPage = () => {
         <button>Entrar</button>
       </form>
       <p onClick={() => navigate('/cadastro')}>Não tem uma conta? Cadastre-se!</p>
-      <div onClick={() => navigate('/')}>Produtos</div>
+      <div onClick={() => navigate('/')}>Deseja antes disso continuar<br/>vendo os nossos produtos?</div>
     </SignBody>
   );
 };

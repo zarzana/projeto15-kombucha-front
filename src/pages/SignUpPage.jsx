@@ -48,7 +48,7 @@ const SignUpPage = () => {
         <button>Cadastrar</button>
       </form>
       <p onClick={() => navigate('/entrar')}>Já tem uma conta? Faça login!</p>
-      <div onClick={() => navigate('/')}>Produtos</div>
+      <div onClick={() => navigate('/')}>Deseja antes disso continuar<br/>vendo os nossos produtos?</div>
     </SignBody>
   );
 };
