@@ -28,7 +28,7 @@ const CartPage = () => {
     function createList(p){
         const list = []
         p.map(e=>{
-            const pos = list.findIndex(f=>f.id === e.id)
+            const pos = list.findIndex(f=>f._id === e._id)
             if(pos>-1){
                 list[pos].qtd++
             }else{
