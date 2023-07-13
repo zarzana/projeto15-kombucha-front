@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react"
-import CartProduct from "../components/CartProduct"
-import { PageBody, ProductCardInfo, ProductsCard, ProductsCardContent, ProductsCardHeader} from "../style/CartBody"
-import { useNavigate } from "react-router-dom"
-import { UserContext } from "../contexts/userContext"
 import axios from "axios"
+import { useContext, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import CartProduct from "../components/CartProduct"
+import { UserContext } from "../contexts/userContext"
+import { PageBody, ProductCardInfo, ProductsCard, ProductsCardContent, ProductsCardHeader } from "../style/CartBody"
 
 const CartPage = () => {
     const {config} = useContext(UserContext)    
@@ -14,9 +14,9 @@ const CartPage = () => {
     useEffect(()=>{
         const fetchData = async () => {
             try{
-              const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/cart`,config);
-              const l = createList(data)
-              setProds(l)
+                const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/cart`,config);
+                const l = createList(data)
+                setProds(l)
             } catch ({response: {status, statusText, data}}){
                 alert(`${status} ${statusText}\n${data}`);
             }

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { ProductsCardContent, ProductCardInfo } from "../style/CartBody"
+import { ProductCardInfo, ProductsCardContent } from "../style/CartBody"
 
 export default function CartProduct(props){
     const element = props.prod

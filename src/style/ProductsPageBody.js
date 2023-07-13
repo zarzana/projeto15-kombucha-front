@@ -10,7 +10,7 @@ export const ProductsPageBody = styled.div`
     font-size: 18px;
     height: 19px;
     width: 19px;
-    background-color: #5dbb63;
+    background-color: white;
     position: fixed;
     right: 0;
     margin-right: 5px;
@@ -32,82 +32,83 @@ export const ProductsPageBody = styled.div`
     margin-top: 68px;
     gap: 8px;
     flex-wrap: wrap;
-    li{
-      &:hover{
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-      }
-      background-color: white;
-      box-sizing: content-box;
-      border: 2px solid lightgray;
-      border-radius: 8px;
-      width: 168px;
-      div:nth-child(1) {
-        h2{
-          -webkit-text-stroke-width: 1px;
-          -webkit-text-stroke-color: white;
-          transform: rotate(-45deg);
-          position: absolute;
-          z-index: 1;
-          font-weight: 500;
-          font-size: 26px;
-          color: red;
-          align-self: center;
-          margin-top: 60px;
-        }
-        hr{
-          margin-top: -1px;
-          width: 100%;
-          border-color: lightgray;
-        }
-        display: flex;
-        flex-direction: column;
-        height: 168px;
-        width: 168px;
-        img{
-          position: relative;
-          border-top-right-radius: 6px;
-          border-top-left-radius: 6px;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-      div:nth-child(2){
-        margin-top: -8px;
-        display: flex;
-        flex-direction: column;
-        p{
-          max-width: 168px;
-          overflow: scroll hidden;
-          white-space: nowrap;
-          margin-left: 2px;
-          font-weight: 500;
-          margin-bottom: 3px;
-          span{
-            color: lightgray;
-          }
-        }
-        button{
-          cursor: pointer;
-          background-color: #5dbb63;
-          height: 53px;
-          font-size: 18px;
-          font-weight: 500;
-          color: white;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: none;
-          border-radius: 0 0 6px 6px;
-          transition-duration: 400ms;
-          &:hover{
-            opacity: 0.9;
-          }
-        }
-      }
-    }
   }
 `
+export const StyledProductCard = styled.li`
+&:hover{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+background-color: white;
+box-sizing: content-box;
+border: 2px solid lightgray;
+border-radius: 8px;
+width: 168px;
+div:nth-child(1) {
+  h2{
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    transform: rotate(-45deg);
+    position: absolute;
+    z-index: 1;
+    font-weight: 500;
+    font-size: 26px;
+    color: red;
+    align-self: center;
+    margin-top: 60px;
+  }
+  hr{
+    margin-top: -1px;
+    width: 100%;
+    border-color: lightgray;
+  }
+  display: flex;
+  flex-direction: column;
+  height: 168px;
+  width: 168px;
+  img{
+    position: relative;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+div:nth-child(2){
+  margin-top: -8px;
+  display: flex;
+  flex-direction: column;
+  p{
+    max-width: 168px;
+    overflow: scroll hidden;
+    white-space: nowrap;
+    margin-left: 2px;
+    font-weight: 500;
+    margin-bottom: 3px;
+    span{
+      color: lightgray;
+    }
+  }
+  button{
+    cursor: pointer;
+    background-color: ${({ isInCart }) => isInCart ? 'lightgray' : '#5dbb63'};
+    height: 53px;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 0 0 6px 6px;
+    transition-duration: 400ms;
+    &:hover{
+      opacity: 0.9;
+    }
+  }
+}
+`
+
 export const ProductsPageNavBar = styled.div`
   font-family: 'Lexend Deca', sans-serif;
   z-index: 2;
@@ -117,7 +118,7 @@ export const ProductsPageNavBar = styled.div`
   align-items: center;
   top: 0;
   position: fixed;
-  background-color: lightgray;
+  background-color: #5dbb63;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   div{
     margin-left: 5px;

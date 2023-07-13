@@ -11,7 +11,6 @@ const ProductsPage = () => {
 
   const { name , config } = useContext(UserContext);
 
-  //FAZER REQUISIÇÃO GET PARA PEGAR OS PRODUTOS DO CARRINHO
   const [cartProducts, setCartProducts] = useState([]);
 
   const signOut = async () => {
@@ -32,8 +31,10 @@ const ProductsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try{
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products`);
-        setProducts(data);
+        const productsData = await axios.get(`${import.meta.env.VITE_API_URL}/products`);
+        setProducts(productsData.data);
+        const cartData = await axios.get(`${import.meta.env.VITE_API_URL}/cart`, config);
+        setCartProducts(cartData.data);
       } catch ({response: {status, statusText, data}}){
         console.log(`${status} ${statusText}\n${data}`);
       }
@@ -59,7 +60,7 @@ const ProductsPage = () => {
           }
         </div>
         <h1>{cartProducts.length}</h1>
-        <StyledCart />
+        <StyledCart onClick={() => navigate('/carrinho')}/>
       </ProductsPageNavBar>
       <ul>
           {products.map((product) => 

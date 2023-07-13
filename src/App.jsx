@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { UserContext } from "./contexts/userContext";
+import CartPage from "./pages/CartPage";
 import ProductsPage from "./pages/ProductsPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
-import CartPage from "./pages/CartPage";
 
 function App() {
 
