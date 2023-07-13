@@ -16,19 +16,24 @@ const ProductCard = ({ product, cartProducts, setCartProducts, setProducts }) =>
   const addToCart = async () => {
     if (!name) return alert('Para adicionar produtos no carrinho você deve estar logado');
     if (stock < 1) return alert('Não há nenhum desse produto no estoque');
-    //remover produto do carrinho E devolver a quantidade do mesmo ao estoque
-    if (isInCart) return alert('Ainda falta implementar essa funcionalidade');
 
     try {
-      await axios.put((`${import.meta.env.VITE_API_URL}/products/${-1}/${_id}`));
+      let value;
+      if (isInCart) {
+        value = 1;
+        const newCart = cartProducts.filter((product) => product._id !== _id);
+        await axios.post(`${import.meta.env.VITE_API_URL}/cart`,{list:newCart},config);
+      } else {
+        value = -1;
+        await axios.post(`${import.meta.env.VITE_API_URL}/cart/${_id}`, [], config);
+      }
 
+      await axios.put((`${import.meta.env.VITE_API_URL}/products/${value}/${_id}`));
       const productsData = await axios.get(`${import.meta.env.VITE_API_URL}/products`);
       setProducts(productsData.data);
 
-      await axios.post(`${import.meta.env.VITE_API_URL}/cart/${_id}`, [], config);
       const cartData = await axios.get(`${import.meta.env.VITE_API_URL}/cart`, config);
       setCartProducts(cartData.data);
-
     } catch ({response: {status, statusText, data}}){
       alert(`${status} ${statusText}\n${data}`);
     }
