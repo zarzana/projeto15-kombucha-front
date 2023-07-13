@@ -44,7 +44,9 @@ border: 2px solid lightgray;
 border-radius: 8px;
 width: 168px;
 div:nth-child(1) {
+  cursor: pointer;
   h2{
+    width: 190px;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: white;
     transform: rotate(-45deg);
@@ -108,7 +110,6 @@ div:nth-child(2){
   }
 }
 `
-
 export const ProductsPageNavBar = styled.div`
   font-family: 'Lexend Deca', sans-serif;
   z-index: 2;

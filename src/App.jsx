@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { UserContext } from "./contexts/userContext";
 import CartPage from "./pages/CartPage";
+import ProductPage from "./pages/ProductPage";
 import ProductsPage from "./pages/ProductsPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -38,6 +39,7 @@ function App() {
     }}>
       <Routes>
         <Route path="/" element={ <ProductsPage/> }/>
+        <Route path="/:id" element={ <ProductPage/> }/>
         <Route path="/entrar" element={ <SignInPage/> }/>
         <Route path="/cadastro" element={ <SignUpPage/> }/>
         <Route path="/carrinho" element={ <CartPage/> }/>

@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/userContext";
 import { AddRmCart, StyledProductCard } from "../style/ProductsPageBody";
 
 const ProductCard = ({ product, cartProducts, setCartProducts, setProducts }) => {
-  const { _id, title, description, price, stock, imgUrl } = product;
+  const { _id, title, price, stock, imgUrl } = product;
+
+  const navigate = useNavigate();
 
   const { config, name } = useContext(UserContext);
 
@@ -12,7 +15,7 @@ const ProductCard = ({ product, cartProducts, setCartProducts, setProducts }) =>
 
   const addToCart = async () => {
     if (!name) return alert('Para adicionar produtos no carrinho você deve estar logado');
-    if (stock < 1) return alert('Não há nenhum desse produto no no estoque');
+    if (stock < 1) return alert('Não há nenhum desse produto no estoque');
     //remover produto do carrinho E devolver a quantidade do mesmo ao estoque
     if (isInCart) return alert('Ainda falta implementar essa funcionalidade');
 
@@ -33,7 +36,7 @@ const ProductCard = ({ product, cartProducts, setCartProducts, setProducts }) =>
 
   return(
     <StyledProductCard isInCart={isInCart}>
-      <div>
+      <div  onClick={() => navigate(`/${_id}`, { state: { product, cartProducts } })} >
         {stock < 1 && <h2>Fora de estoque</h2>}
         <img src={imgUrl}></img>
         <hr />
@@ -44,10 +47,7 @@ const ProductCard = ({ product, cartProducts, setCartProducts, setProducts }) =>
         <p><span>no estoque: {stock}</span></p>
         <button onClick={addToCart}>
           {isInCart
-            ?
-            <h3>Remover do Carrinho</h3>
-            :
-            <h3>Adicionar ao Carrinho</h3>
+            ? <h3>Remover do Carrinho</h3> : <h3>Adicionar ao Carrinho</h3>
           }
           <AddRmCart />
         </button>
