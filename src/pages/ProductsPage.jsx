@@ -1,32 +1,16 @@
 import axios from "axios";
 import { useContext, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import ProductCard from "../components/Product";
 import { ProductsContext } from "../contexts/productsContext";
 import { UserContext } from "../contexts/userContext";
-import { ProductsPageBody, ProductsPageNavBar, StyledArrow, StyledCart, StyledResetSearch, StyledSearch } from "../style/ProductsPageBody";
+import { ProductsPageBody, StyledResetSearch, StyledSearch } from "../style/ProductsPageBody";
 
 const ProductsPage = () => {
 
-  const navigate = useNavigate();
-
-  const { name , config } = useContext(UserContext);
-  const { cartProducts, setCartProducts } = useContext(ProductsContext);
+  const { config } = useContext(UserContext);
+  const { setCartProducts } = useContext(ProductsContext);
 
   const [products, setProducts] = useState([]);
-
-  const signOut = async () => {
-    if (!confirm('Tem certeza que deseja sair?')) return;
-
-    try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/sign-out`, config);
-      localStorage.removeItem('config');
-      localStorage.removeItem('name');
-      window.location.reload();
-    } catch ({response: {status, statusText, data}}){
-      alert(`${status} ${statusText}\n${data}`);
-    }
-  };
 
   const searched = useRef(false);
   const getProductsData = async () => {
@@ -64,24 +48,6 @@ const ProductsPage = () => {
 
   return (  
     <ProductsPageBody>
-      <ProductsPageNavBar>
-        <div>
-          {!name 
-            ?
-            <>
-              <p onClick={() => navigate('/cadastro')}>Cadastro</p>
-              <p onClick={() => navigate('/entrar')}>Entrar</p>
-            </>
-            :
-            <>
-              <StyledArrow onClick={signOut}/>
-              <span>{name}</span>
-            </>
-          }
-        </div>
-        <h1>{cartProducts.length}</h1>
-        <StyledCart onClick={() => navigate('/carrinho')}/>
-      </ProductsPageNavBar>
       <form>
         <input placeholder="teste"
           value={searchInput}

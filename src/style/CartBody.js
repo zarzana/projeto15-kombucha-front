@@ -9,6 +9,18 @@ export const PageBody = styled.div`
     height:100vh;
     padding: 8px;
     background-color: #EDEDED;
+    p:last-child{
+        cursor: pointer;
+        text-align: center;
+        margin-top: 20px;
+        color: gray;
+        font-size: 20px;
+        font-weight: 500;
+        transition-duration: 400ms;
+        &:hover{
+            color: #5dbb63;
+        }
+    }
 `
 
 export const ProductsCard = styled.div`

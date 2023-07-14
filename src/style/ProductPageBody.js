@@ -7,7 +7,7 @@ export const ProductPageBody = styled.div`
   width: 100vw;
   height: 100vh;
   div:nth-child(1){
-    margin-top: 20px;
+    margin-top: 90px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -99,16 +99,16 @@ export const ProductPageBody = styled.div`
         }
       }
     }
-    p:last-child{
-      cursor: pointer;
-      text-align: center;
-      margin-top: 20px;
-      color: gray;
-      font-size: 20px;
-      font-weight: 500;
-      transition-duration: 400ms;
-      &:hover{
-        color: #5dbb63;
-      }
+  p:last-child{
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+    color: gray;
+    font-size: 20px;
+    font-weight: 500;
+    transition-duration: 400ms;
+    &:hover{
+      color: #5dbb63;
     }
+  }
 `

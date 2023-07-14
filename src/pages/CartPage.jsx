@@ -18,7 +18,9 @@ const CartPage = () => {
                 const l = createList(data)
                 setProds(l)
             } catch ({response: {status, statusText, data}}){
-                alert(`${status} ${statusText}\n${data}`);
+                const errors = `${status} ${statusText}\n${data}`;
+                if (status === 401) return console.log(errors)
+                alert(errors);
             }
         }
         fetchData();
@@ -88,6 +90,7 @@ const CartPage = () => {
                 </ProductsCardHeader>
                 {!prods||prods.length==0?"":<button onClick={()=>Confirm()}>Confirm</button>}
             </ProductsCard>
+            <p onClick={() => navigate(-1)}>Voltar</p>
         </PageBody>
     )
 }
