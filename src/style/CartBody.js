@@ -24,6 +24,14 @@ export const ProductsCard = styled.div`
     hr{
         width: 100%;
     }
+    button{
+        color: white;
+        background-color: #64C172;
+        border-radius: 4px;
+        border-style: none;
+        height: 100%;
+        font-size: 17px;
+    }
 `
 
 export const ProductsCardHeader = styled.div`
@@ -32,6 +40,7 @@ export const ProductsCardHeader = styled.div`
     width: 100%;
     padding: 10px 0;
     justify-content: space-between;
+    font-size: 20px;
 `
 
 export const ProductsCardContent = styled.div`
@@ -43,6 +52,10 @@ export const ProductsCardContent = styled.div`
     img{
         width:48px;
         height:48px;
+    }
+    
+    button{
+        background-color: #d31717;
     }
 `
 
@@ -57,15 +70,40 @@ export const ProductCardInfo = styled.div`
     }
 
     form{
+        display: flex;
         height: 22px;
-        input{
+        input:disabled{
             margin: 0;
             text-align: center;
             border-radius:0;
             border-style: solid;
             width: 60px;
+            border-right: none;
+            border-left: none;
+            background-color: white;
+            border-color: rgb(118,118,118);
         }
         button{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            width: 20%;
+            border-style: solid;
+            background-color: white;
+            color: #1366f4;
+            border-color: rgb(118,118,118);
+        }
+        button:disabled{
+            color: rgba(19,102,244,0.2);
+        }
+        .minus{
+            border-radius:6px 0 0 6px;
+            border-right: none;
+        }
+        .plus{
+            border-radius: 0 6px 6px 0;
+            border-left: none;
         }
     }
 `

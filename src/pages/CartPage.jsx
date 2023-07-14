@@ -84,7 +84,7 @@ const CartPage = () => {
             <ProductsCard>
                 <ProductsCardHeader>
                     <>Total</>
-                    <b>R$ {total}</b>
+                    <b>R$ {total?total.toFixed(2):""}</b>
                 </ProductsCardHeader>
                 {!prods||prods.length==0?"":<button onClick={()=>Confirm()}>Confirm</button>}
             </ProductsCard>

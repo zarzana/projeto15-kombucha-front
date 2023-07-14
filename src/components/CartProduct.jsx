@@ -18,11 +18,11 @@ export default function CartProduct(props){
             <ProductCardInfo>
                 <span className="Name">{element.title}</span>
                 <form onSubmit={event=>event.preventDefault()}>
-                    <button onClick={()=>{handleChange(qtd-1);props.changeQ()}} disabled={qtd==1}>{"-"}</button>
+                    <button className="minus" onClick={()=>{handleChange(qtd-1);props.changeQ()}} disabled={qtd==1}><strong>{"-"}</strong></button>
                     <input type="text" inputMode="numeric" required value={qtd} disabled/>
-                    <button onClick={()=>{handleChange(qtd+1);props.changeQ()}} disabled={qtd==element.stock}>{"+"}</button>
+                    <button className="plus" onClick={()=>{handleChange(qtd+1);props.changeQ()}} disabled={qtd==element.stock}><strong>{"+"}</strong></button>
                 </form>
-                <span>{`R$ ${element.price*qtd}`}</span>
+                <span>{`R$ ${element.price?(element.price*qtd).toFixed(2):""}`}</span>
             </ProductCardInfo>
             <button onClick={()=>{props.deleteP(element)}}>Remove</button>
         </ProductsCardContent>
