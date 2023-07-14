@@ -32,7 +32,7 @@ const CartPage = () => {
             if(pos>-1){
                 list[pos].qtd++
             }else{
-                list.push({...e,qtd:1})
+                !e.qtd?list.push({...e,qtd:1}):list.push(e)
             }
         })
         return list
