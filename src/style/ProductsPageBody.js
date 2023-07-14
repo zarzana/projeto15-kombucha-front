@@ -75,7 +75,7 @@ export const ProductsPageBody = styled.div`
       max-width: 352px;
     }
     @media (min-width: 550px) {
-      max-width: 100%;
+      max-width: 1100px;
     }
     min-width: 352px;
     display: flex;
