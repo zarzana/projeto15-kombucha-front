@@ -1,8 +1,53 @@
+import { BsSearch } from "react-icons/bs";
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import { PiShoppingCartFill } from 'react-icons/pi';
+import { TbZoomReset } from "react-icons/tb";
 import { styled } from "styled-components";
 
 export const ProductsPageBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  form{
+    display: flex;
+    margin-top: 70px;
+    input{
+      padding-left: 6px;
+      user-select: text;
+      background: #FFFFFF;
+      border: 1px solid #D5D5D5;
+      font-size: 17px;
+      line-height: 21px;
+      color: #666666;
+      width: 290px;
+      border-radius: 8px 0 0 8px;
+      &:disabled{
+            cursor: default;
+            opacity: 0.5;
+            background: #F2F2F2;
+      }
+      &::placeholder{
+        color: #DBDBDB;
+      }
+    }
+    button:nth-child(3){
+      border-radius: 0 8px 8px 0;
+    }
+    button{
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: none;
+      background-color: lightgrey;
+      transition-duration: 400ms;
+      &:hover{
+        background-color: #5dbb63;
+      }
+    }
+  }
   h1{
     text-align: center;
     border-radius: 100%;
@@ -17,6 +62,11 @@ export const ProductsPageBody = styled.div`
     top: 34px;
     z-index: 1;
   }
+  h2{
+    margin-top: 8px;
+    font-weight: 700;
+    font-size: 17px;
+  }
   font-family: 'Lexend Deca', sans-serif;
   display: flex;
   justify-content: center;
@@ -29,7 +79,7 @@ export const ProductsPageBody = styled.div`
     }
     min-width: 352px;
     display: flex;
-    margin-top: 68px;
+    margin-top: 8px;
     gap: 8px;
     flex-wrap: wrap;
   }
@@ -173,4 +223,12 @@ export const StyledArrow = styled(FaArrowCircleLeft)`
   &:hover{
     color: white;
   }
+`
+
+export const StyledSearch = styled(BsSearch)`
+  font-size: 32px;
+`
+
+export const StyledResetSearch = styled(TbZoomReset)`
+  font-size: 32px;
 `

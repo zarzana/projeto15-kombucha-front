@@ -25,12 +25,17 @@ export const ProductsCard = styled.div`
         width: 100%;
     }
     button{
+        cursor: pointer;
         color: white;
         background-color: #64C172;
         border-radius: 4px;
         border-style: none;
         height: 100%;
         font-size: 17px;
+        transition-duration: 400ms;
+        &:hover{
+                opacity: 0.9;
+        }
     }
 `
 
@@ -55,7 +60,12 @@ export const ProductsCardContent = styled.div`
     }
     
     button{
+        cursor: pointer;
         background-color: #d31717;
+        transition-duration: 400ms;
+        &:hover{
+            opacity: 0.9;
+        }
     }
 `
 
@@ -84,6 +94,7 @@ export const ProductCardInfo = styled.div`
             border-color: rgb(118,118,118);
         }
         button{
+            cursor: pointer;
             display: flex;
             text-align: center;
             justify-content: center;
@@ -93,9 +104,17 @@ export const ProductCardInfo = styled.div`
             background-color: white;
             color: #1366f4;
             border-color: rgb(118,118,118);
+            transition-duration: 400ms;
+            &:hover{
+                opacity: 0.9;
+            }
         }
         button:disabled{
+            cursor: default;
             color: rgba(19,102,244,0.2);
+            &:hover{
+                opacity: 1;
+            }
         }
         .minus{
             border-radius:6px 0 0 6px;

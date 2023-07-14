@@ -10,8 +10,6 @@ import SignUpPage from "./pages/SignUpPage";
 
 function App() {
 
-  const navigate = useNavigate();
-
   const [cartProducts, setCartProducts] = useState([]);
 
   const [loginData, setLoginData] = useState({});
