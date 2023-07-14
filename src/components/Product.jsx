@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
 
   return(
     <StyledProductCard isInCart={isInCart}>
-      <div  onClick={() => navigate(`produto/${_id}`, { state: { product } })} >
+      <div  onClick={() => navigate(`/produto/${_id}`, { state: { product } })} >
         {stock < 1 && <h2>Fora de estoque</h2>}
         <img src={imgUrl}></img>
         <hr />
