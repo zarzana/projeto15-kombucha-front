@@ -127,7 +127,6 @@ div:nth-child(1) {
   }
 }
 div:nth-child(2){
-  margin-top: -8px;
   display: flex;
   flex-direction: column;
   p{
@@ -136,7 +135,7 @@ div:nth-child(2){
     white-space: nowrap;
     margin-left: 2px;
     font-weight: 500;
-    margin-bottom: 3px;
+    margin-bottom: 7px;
     span{
       color: lightgray;
     }
@@ -187,7 +186,7 @@ export const ProductsPageNavBar = styled.div`
       }
     }
     span{
-      max-width: 230px;
+      max-width: 95%;
       overflow: scroll hidden;
       white-space: nowrap;
       font-weight: 500;
