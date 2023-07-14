@@ -47,7 +47,8 @@ function App() {
       }
       <Routes>
         <Route path="/" element={ <ProductsPage/> }/>
-        <Route path="/:id" element={ <ProductPage/> }/>
+        <Route path="/:page" element={ <ProductsPage/> }/>
+        <Route path="/produto/:id" element={ <ProductPage/> }/>
         <Route path="/entrar" element={ <SignInPage/> }/>
         <Route path="/cadastro" element={ <SignUpPage/> }/>
         <Route path="/carrinho" element={ <CartPage/> }/>

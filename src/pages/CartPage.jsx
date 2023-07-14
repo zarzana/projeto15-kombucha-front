@@ -2,11 +2,13 @@ import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import CartProduct from "../components/CartProduct"
+import { ProductsContext } from "../contexts/productsContext"
 import { UserContext } from "../contexts/userContext"
 import { PageBody, ProductCardInfo, ProductsCard, ProductsCardContent, ProductsCardHeader } from "../style/CartBody"
 
 const CartPage = () => {
-    const {config} = useContext(UserContext)    
+    const {config} = useContext(UserContext)  
+    const {setCartProducts} = useContext(ProductsContext)  
     const [prods,setProds] = useState()
     const [total,setTotal] = useState()
     const navigate = useNavigate()
@@ -53,6 +55,8 @@ const CartPage = () => {
         try {
             console.log(prods)
             await axios.post(`${import.meta.env.VITE_API_URL}/cart`,{list:prods},config)
+            const cartData = await axios.get(`${import.meta.env.VITE_API_URL}/cart`, config);
+            setCartProducts(cartData.data);
         } catch ({response: {status, statusText, data}}){
             alert(`${status} ${statusText}\n${data}`);
         }

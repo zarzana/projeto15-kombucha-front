@@ -63,11 +63,38 @@ export const ProductsPageBody = styled.div`
     @media (min-width: 550px) {
       max-width: 1100px;
     }
+    margin-bottom: 40px;
     min-width: 352px;
     display: flex;
     margin-top: 8px;
     gap: 8px;
     flex-wrap: wrap;
+  }
+`
+export const NavigateButtons = styled.div`
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 6px;
+  margin-top: 6px;
+  display: flex;
+  gap: 10px;
+  div{
+    p{
+      font-size: 24px;
+      text-align: center;
+    }
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: red;
+    background-color: lightgrey;
+    color: black;
+    transition-duration: 400ms;
+    &:hover{
+      background-color: #5dbb63;
+      color: white;
+    }
   }
 `
 export const StyledProductCard = styled.li`
