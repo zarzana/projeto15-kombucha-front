@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { ProductsContext } from "./contexts/productsContext";
 import { UserContext } from "./contexts/userContext";
 import CartPage from "./pages/CartPage";

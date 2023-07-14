@@ -96,7 +96,7 @@ width: 168px;
 div:nth-child(1) {
   cursor: pointer;
   h2{
-    width: 190px;
+    width: 220px;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: white;
     transform: rotate(-45deg);

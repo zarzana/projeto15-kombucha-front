@@ -24,7 +24,7 @@ export const ProductPageBody = styled.div`
       height: 340px;
       border: none;
       h3{
-        width: 370px;
+        width: 400px;
         -webkit-text-stroke-width: 1px;
         -webkit-text-stroke-color: white;
         transform: rotate(-45deg);
@@ -34,8 +34,6 @@ export const ProductPageBody = styled.div`
         font-size: 50px;
         color: red;
         align-self: center;
-        margin-top: -25px;
-        margin-left: 10px;
       }
       img{
           position: relative;
@@ -76,6 +74,7 @@ export const ProductPageBody = styled.div`
         margin-left: 2px;
         font-weight: 500;
         margin-bottom: 3px;
+        overflow-wrap: break-word;
         span{
           color: lightgray;
         }
