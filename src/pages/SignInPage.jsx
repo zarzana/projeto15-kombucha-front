@@ -20,7 +20,7 @@ const signInPage = () => {
     try {
       const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/sign-in`, signInInputs);
       setLoginData(data);
-      navigate('/');
+      navigate('/1');
     } catch ({response: {status, statusText, data}}){
       alert(`${status} ${statusText}\n${data}`);
     }
