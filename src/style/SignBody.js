@@ -36,14 +36,14 @@ export const SignBody = styled.div`
     font-size: 20px;
     line-height: 25px;
     color: #666666;
-        &:disabled{
-            cursor: default;
-            opacity: 0.5;
-            background: #F2F2F2;
-        }
-        &::placeholder{
-            color: #DBDBDB;
-        }
+    &:disabled{
+        cursor: default;
+        opacity: 0.5;
+        background: #F2F2F2;
+    }
+    &::placeholder{
+        color: #DBDBDB;
+    }
   }
   button{
     cursor: pointer;
