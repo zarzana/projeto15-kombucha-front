@@ -64,6 +64,7 @@ const ProductsPage = () => {
       setSearchInput("");
 
       setPageCounter(1);
+      setRemainingProducts(1);
       navigate('/1');
     } else {
       try {
@@ -121,20 +122,20 @@ const ProductsPage = () => {
               }
           </ul>
           <NavigateButtons>
-              <>
-                {pathname !== '/1'  
-                && 
-                  <div onClick={() => navigateBetween(false)}>
-                    <p>{'<'}</p>
-                  </div>
-                }
-                {products.productsData.length === qtd && remainingProducts - qtd > 0
-                &&
-                  <div onClick={() => navigateBetween(true)}>
-                    <p>{'>'}</p>
-                  </div>
-                }
-              </>
+            <>
+              {pathname !== '/1'  
+              && 
+                <div onClick={() => navigateBetween(false)}>
+                  <p>{'<'}</p>
+                </div>
+              }
+              {products.productsData.length === qtd && remainingProducts - qtd > 0
+              &&
+                <div onClick={() => navigateBetween(true)}>
+                  <p>{'>'}</p>
+                </div>
+              }
+            </>
           </NavigateButtons>
         </>)
       }
