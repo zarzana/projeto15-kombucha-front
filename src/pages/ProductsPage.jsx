@@ -33,7 +33,6 @@ const ProductsPage = () => {
     }
   };
   
-  const topInputRef = useRef(null);
   const [pageCounter, setPageCounter] = useState(1);
   const [remainingProducts, setRemainingProducts] = useState(0);
   const changeRemainingProducts = (data) => {
@@ -48,11 +47,11 @@ const ProductsPage = () => {
     });
   };
   const getProductsData = async () => {
-    topInputRef.current.scrollIntoView({ behavior: 'smooth' });
     try {
       const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products?page=${pageCounter}&qtd=${qtd}`);
       setProducts(data);
       changeRemainingProducts(data);
+      window.scrollTo({ top: 0,behavior: 'smooth' });
     } catch ({response: {status, statusText, data}}){
       alert(`${status} ${statusText}\n${data}`);
     }
@@ -94,7 +93,6 @@ const ProductsPage = () => {
     <ProductsPageBody>
       <form>
         <input placeholder="teste"
-          ref={topInputRef} 
           value={searchInput}
           onChange={e => setSearchInput(e.target.value)}
         ></input>
