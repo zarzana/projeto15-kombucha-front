@@ -121,7 +121,7 @@ const ProductsPage = () => {
                   <div onClick={() => {
                     setRemainingProducts(previous => previous + qtd);
                     setPageCounter(previous => previous -1); 
-                    navigate(-1); 
+                    navigate(`/${(pageCounter -1)}`); 
                   }}>
                     <p>{'<'}</p>
                   </div>

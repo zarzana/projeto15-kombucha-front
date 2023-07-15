@@ -47,12 +47,6 @@ export const ProductPageBody = styled.div`
       width: 100%;
       display: flex;
       flex-direction: column;
-      hr{
-        margin-top: 2px;
-        margin-bottom: -1px;
-        width: 100%;
-        border-color: lightgray;
-      }
       div{
         height: auto;
         display: flex;

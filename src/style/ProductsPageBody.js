@@ -121,11 +121,6 @@ export const StyledProductCard = styled.li`
       align-self: center;
       margin-top: 60px;
     }
-    hr{
-      margin-top: -1px;
-      width: 100%;
-      border-color: lightgray;
-    }
     display: flex;
     flex-direction: column;
     height: 168px;
@@ -148,7 +143,7 @@ export const StyledProductCard = styled.li`
       white-space: nowrap;
       margin-left: 2px;
       font-weight: 500;
-      margin-bottom: 7px;
+      margin-bottom: 2px;
       span{
         color: lightgray;
       }

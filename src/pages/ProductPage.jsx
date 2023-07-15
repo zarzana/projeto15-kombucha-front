@@ -29,7 +29,6 @@ const ProductPage = () => {
             <h1>{title}</h1>
             <h2>R${price.toFixed(2).replace('.', ',')}</h2>
           </div>
-          <hr/>
           <p>{description}</p>
           <p><span>no estoque: {stock}</span></p>
           <button onClick={() => addToCart(import.meta.env.VITE_API_URL, name, config, _id, stock, isInCart, cartProducts, setCartProducts)}>

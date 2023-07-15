@@ -20,7 +20,6 @@ const ProductCard = ({ product }) => {
       <div  onClick={() => navigate(`/produto/${_id}`, { state: { product } })} >
         {stock < 1 && <h2>Fora de estoque</h2>}
         <img src={imgUrl}></img>
-        <hr />
       </div>
       <div>
         <p>{title}</p>
