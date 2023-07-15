@@ -22,9 +22,9 @@ export default function CartProduct(props){
                     <input type="text" inputMode="numeric" required value={qtd} disabled/>
                     <button className="plus" onClick={()=>{handleChange(qtd+1);props.changeQ()}} disabled={qtd==element.stock}><strong>{"+"}</strong></button>
                 </form>
-                <span>{`R$ ${element.price?(element.price*qtd).toFixed(2):""}`}</span>
+                <span>{`R$ ${element.price?(element.price*qtd).toFixed(2).replace('.',','):""}`}</span>
             </ProductCardInfo>
-            <button onClick={()=>{props.deleteP(element)}}>Remove</button>
+            <button onClick={()=>{props.deleteP(element)}}>Remover</button>
         </ProductsCardContent>
     </>
 )}

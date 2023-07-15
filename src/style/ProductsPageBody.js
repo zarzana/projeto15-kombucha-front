@@ -78,6 +78,7 @@ export const NavigateButtons = styled.div`
   margin-top: 6px;
   display: flex;
   gap: 10px;
+  z-index: 2;
   div{
     span{
       font-size: 18px;

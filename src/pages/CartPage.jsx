@@ -88,9 +88,9 @@ const CartPage = () => {
             <ProductsCard>
                 <ProductsCardHeader>
                     <>Total</>
-                    <b>R$ {total?total.toFixed(2):""}</b>
+                    <b>R$ {total?total.toFixed(2).replace('.',','):""}</b>
                 </ProductsCardHeader>
-                {!prods||prods.length==0?"":<button onClick={()=>Confirm()}>Confirm</button>}
+                {!prods||prods.length==0?"":<button onClick={()=>Confirm()}>Confirmar</button>}
             </ProductsCard>
             <p onClick={() => navigate('/')}>Voltar</p>
         </PageBody>

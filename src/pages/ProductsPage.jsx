@@ -18,8 +18,10 @@ const ProductsPage = () => {
   const getAllData = async () => {
     getProductsData();
     try{
-      const cartData = await axios.get(`${import.meta.env.VITE_API_URL}/cart`, config);
-      setCartProducts(cartData.data);
+      if (products.count === remainingProducts || !products.count){
+        const cartData = await axios.get(`${import.meta.env.VITE_API_URL}/cart`, config);
+        setCartProducts(cartData.data);
+      }
       searched.current = false;
       
     } catch ({response: {status, statusText, data}}){
@@ -85,7 +87,6 @@ const ProductsPage = () => {
     setRemainingProducts(previous => previous + (right ? -qtd : qtd));
     setPageCounter(previous => previous + (right ? 1 : -1)); 
   };
-  console.log(remainingProducts);
 
   return (  
     <ProductsPageBody>
