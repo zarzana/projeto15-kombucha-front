@@ -37,7 +37,7 @@ const ProductPage = () => {
           </button>
         </div>
       </div>
-      <p onClick={() => navigate('/1')}>Voltar</p>
+      <p onClick={() => navigate('/')}>Voltar</p>
     </ProductPageBody>
   );
 };

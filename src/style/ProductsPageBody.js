@@ -79,6 +79,9 @@ export const NavigateButtons = styled.div`
   display: flex;
   gap: 10px;
   div{
+    span{
+      font-size: 18px;
+    }
     p{
       font-size: 24px;
       text-align: center;
