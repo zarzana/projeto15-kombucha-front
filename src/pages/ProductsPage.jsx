@@ -92,7 +92,7 @@ const ProductsPage = () => {
   return (  
     <ProductsPageBody>
       <form>
-        <input placeholder="teste"
+        <input placeholder="Buscar produtos..."
           value={searchInput}
           onChange={e => setSearchInput(e.target.value)}
         ></input>
@@ -104,7 +104,7 @@ const ProductsPage = () => {
         (<>
           {(products.productsData.length === 0 && searched.current) 
             ? 
-            <h2>Não há nenhum produto com essa categoria</h2>
+            <h2>Não foi encontrado nenhum produto</h2>
             : 
             products.productsData.length === 0
             && <h2>Não há nenhum produto cadastrado</h2>
