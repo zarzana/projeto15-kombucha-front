@@ -64,7 +64,7 @@ const ProductsPage = () => {
       setSearchInput("");
 
       setPageCounter(1);
-      setRemainingProducts(1);
+      setRemainingProducts(0);
       navigate('/1');
     } else {
       try {
