@@ -73,7 +73,7 @@ export const ProductsCardContent = styled.div`
     
     button{
         cursor: pointer;
-        background-color: #d31717;
+        background-color: #FF5C5C;
         transition-duration: 400ms;
         &:hover{
             opacity: 0.9;

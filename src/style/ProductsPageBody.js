@@ -117,7 +117,7 @@ export const StyledProductCard = styled.li`
       z-index: 1;
       font-weight: 500;
       font-size: 26px;
-      color: red;
+      color: #FF2E2E;
       align-self: center;
       margin-top: 60px;
     }
@@ -149,8 +149,8 @@ export const StyledProductCard = styled.li`
       }
     }
     button{
-      cursor: pointer;
-      background-color: ${({ isInCart }) => isInCart ? 'lightgray' : '#5dbb63'};
+      cursor: ${({ stock }) => stock < 1 ? 'default' : 'pointer'};
+      background-color: ${({ cart, stock }) => cart ? '#FF5C5C' : (stock < 1 ? 'lightgray' : '#5dbb63')};
       height: 53px;
       font-size: 18px;
       font-weight: 500;

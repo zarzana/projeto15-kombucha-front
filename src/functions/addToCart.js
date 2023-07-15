@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const addToCart = async (URL, name, config, _id, stock, isInCart, cartProducts, setCartProducts) => {
   if (!name) return alert('Para adicionar produtos no carrinho você deve estar logado');
-  if (stock < 1) return alert('Não há nenhum desse produto no estoque');
+  if (stock < 1) return;
   
   try {
     if (isInCart) {
