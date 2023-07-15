@@ -33,10 +33,12 @@ const ProductsPage = () => {
   const [remainingProducts, setRemainingProducts] = useState(0);
   const changeRemainingProducts = (data) => {
     setRemainingProducts(previous => {
-      if (previous === 0) { 
-        return previous + data.count - qtd
+      if (data.count === 0){
+        return data.count;
       } else if (data.count !== products.count){
         return data.count;
+      } else if (previous === 0) { 
+        return previous + data.count - qtd;
       } else {
         return previous;
       }
@@ -63,7 +65,9 @@ const ProductsPage = () => {
       getProductsData();
     } else {
       try {
+        if (searchInput === "") return;
         const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products?category=${searchInput}&page=${pageCounter}&qtd=${qtd}`);
+        if (data.count === 0) setPageCounter(1);
         setProducts(data);
         changeRemainingProducts(data);
         searched.current = true;
