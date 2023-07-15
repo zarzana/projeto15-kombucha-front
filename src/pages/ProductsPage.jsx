@@ -89,6 +89,12 @@ const ProductsPage = () => {
     }
   }, [pageCounter]);
 
+  const navigateBetween = (right) => {
+    setRemainingProducts(previous => previous + (right ? -qtd : qtd));
+    setPageCounter(previous => previous + (right ? 1 : -1)); 
+    navigate(`/${(pageCounter + (right ? 1 : -1))}`); 
+  };
+
   return (  
     <ProductsPageBody>
       <form>
@@ -118,21 +124,13 @@ const ProductsPage = () => {
               <>
                 {pathname !== '/1'  
                 && 
-                  <div onClick={() => {
-                    setRemainingProducts(previous => previous + qtd);
-                    setPageCounter(previous => previous -1); 
-                    navigate(`/${(pageCounter -1)}`); 
-                  }}>
+                  <div onClick={() => navigateBetween(false)}>
                     <p>{'<'}</p>
                   </div>
                 }
                 {products.productsData.length === qtd && remainingProducts - qtd > 0
                 &&
-                  <div onClick={() => {
-                    setRemainingProducts(previous => previous - qtd);
-                    setPageCounter(previous => previous + 1); 
-                    navigate(`/${(pageCounter + 1)}`);
-                  }}>
+                  <div onClick={() => navigateBetween(true)}>
                     <p>{'>'}</p>
                   </div>
                 }
