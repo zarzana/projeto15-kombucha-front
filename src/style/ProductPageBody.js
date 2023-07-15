@@ -28,15 +28,12 @@ export const ProductPageBody = styled.div`
         -webkit-text-stroke-width: 1px;
         -webkit-text-stroke-color: white;
         transform: rotate(-45deg);
-        position: absolute;
-        z-index: 1;
         font-weight: 500;
         font-size: 50px;
         color: red;
         align-self: center;
       }
       img{
-          position: relative;
           border-radius: 6px 6px 0 0;
           object-fit: cover;
           width: 100%;

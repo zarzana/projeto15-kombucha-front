@@ -15,6 +15,7 @@ const ProductsPage = () => {
   const { setCartProducts } = useContext(ProductsContext);
 
   const { pathname } = useLocation();
+  const pathNumber = Number(pathname.replace('/', ''));
 
   const [products, setProducts] = useState({});
 
@@ -34,11 +35,24 @@ const ProductsPage = () => {
   
   const topInputRef = useRef(null);
   const [pageCounter, setPageCounter] = useState(1);
+  const [remainingProducts, setRemainingProducts] = useState(0);
+  const changeRemainingProducts = (data) => {
+    setRemainingProducts(previous => {
+      if (previous === 0) { 
+        return previous + data.count - qtd
+      } else if (data.count !== products.count){
+        return data.count;
+      } else {
+        return previous;
+      }
+    });
+  };
   const getProductsData = async () => {
     topInputRef.current.scrollIntoView({ behavior: 'smooth' });
     try {
       const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products?page=${pageCounter}&qtd=${qtd}`);
       setProducts(data);
+      changeRemainingProducts(data);
     } catch ({response: {status, statusText, data}}){
       alert(`${status} ${statusText}\n${data}`);
     }
@@ -55,9 +69,9 @@ const ProductsPage = () => {
     } else {
       try {
         const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products?category=${searchInput}&page=${pageCounter}&qtd=${qtd}`);
-
         setProducts(data);
-        
+        changeRemainingProducts(data);
+
         searched.current = true;
   
       } catch ({response: {status, statusText, data}}){
@@ -67,8 +81,7 @@ const ProductsPage = () => {
   };
 
   useEffect(() => {
-    if (products.productsData?.length === 0) navigate(-1);
-    if (pathname === '/' || Number(pathname.replace('/', '') + 1) < 1) navigate('/1');
+    if (pathname === '/' || pathNumber+1 < 1) navigate('/1');
     if (searchInput !== "") {
       searchProducts(true);
     } else {
@@ -108,15 +121,19 @@ const ProductsPage = () => {
                 {pathname !== '/1'  
                 && 
                   <div onClick={() => {
-                    setPageCounter(previous => previous -1); navigate(-1); 
+                    setRemainingProducts(previous => previous + qtd);
+                    setPageCounter(previous => previous -1); 
+                    navigate(-1); 
                   }}>
                     <p>{'<'}</p>
                   </div>
                 }
-                {products.productsData.length === qtd
+                {products.productsData.length === qtd && remainingProducts - qtd > 0
                 &&
                   <div onClick={() => {
-                    setPageCounter(previous => previous + 1); navigate(`/${(pageCounter + 1)}`);
+                    setRemainingProducts(previous => previous - qtd);
+                    setPageCounter(previous => previous + 1); 
+                    navigate(`/${(pageCounter + 1)}`);
                   }}>
                     <p>{'>'}</p>
                   </div>

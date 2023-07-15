@@ -53,7 +53,6 @@ const CartPage = () => {
         prods.splice(i,1)
         setProds([...prods])
         try {
-            console.log(prods)
             await axios.post(`${import.meta.env.VITE_API_URL}/cart`,{list:prods},config)
             const cartData = await axios.get(`${import.meta.env.VITE_API_URL}/cart`, config);
             setCartProducts(cartData.data);
@@ -68,7 +67,6 @@ const CartPage = () => {
 
     async function Confirm(){
         try {
-            console.log(prods)
             await axios.post(`${import.meta.env.VITE_API_URL}/cart`,{list:prods},config)
             navigate("/checkout")
         } catch ({response: {status, statusText, data}}){
