@@ -15,6 +15,7 @@ export const ProductPageBody = styled.div`
     border-radius: 8px;
     width: 340px;
     div:nth-child(1){
+      position: relative;
       display: flex;
       justify-content: center;
       margin-top: unset;
@@ -24,6 +25,7 @@ export const ProductPageBody = styled.div`
       height: 340px;
       border: none;
       h3{
+        position: absolute;
         width: 400px;
         -webkit-text-stroke-width: 1px;
         -webkit-text-stroke-color: white;
@@ -34,11 +36,11 @@ export const ProductPageBody = styled.div`
         align-self: center;
       }
       img{
-          border-radius: 6px 6px 0 0;
-          object-fit: cover;
-          width: 100%;
-          height: 100%;
-          margin-bottom: 2px;
+        border-radius: 6px 6px 0 0;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 2px;
       }
     }
     div:nth-child(2){
