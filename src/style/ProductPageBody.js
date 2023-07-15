@@ -73,8 +73,8 @@ export const ProductPageBody = styled.div`
         }
       }
       button{
-        cursor: pointer;
-        background-color: ${({ isInCart }) => isInCart ? 'lightgray' : '#5dbb63'};
+        cursor: ${({ stock }) => stock < 1 ? 'default' : 'pointer'};
+        background-color: ${({ cart, stock }) => cart ? '#FF5C5C' : (stock < 1 ? 'lightgray' : '#5dbb63')};
         width: 100%;
         height: 53px;
         font-size: 18px;

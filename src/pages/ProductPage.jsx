@@ -18,7 +18,7 @@ const ProductPage = () => {
   const isInCart = cartProducts.some(product => product._id === _id);
 
   return (
-    <ProductPageBody isInCart={isInCart}>
+    <ProductPageBody cart={isInCart} stock={stock}>
       <div>
         <div>
           {stock < 1 && <h3>Fora de estoque</h3>}
