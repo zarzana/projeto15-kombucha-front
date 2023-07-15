@@ -56,7 +56,7 @@ const ProductsPage = () => {
   };
 
   const [searchInput, setSearchInput] = useState("");
-  const searchProducts = async (search) => {
+  const searchProducts = async (search, useEffect) => {
     if (!search) {
       setSearchInput("");
 
@@ -66,7 +66,8 @@ const ProductsPage = () => {
     } else {
       try {
         if (searchInput === "") return;
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products?category=${searchInput}&page=${pageCounter}&qtd=${qtd}`);
+        if (!useEffect) setPageCounter(1);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products?category=${searchInput}&page=${useEffect ? pageCounter : 1}&qtd=${qtd}`);
         if (data.count === 0) setPageCounter(1);
         setProducts(data);
         changeRemainingProducts(data);
@@ -80,7 +81,7 @@ const ProductsPage = () => {
 
   useEffect(() => {
     if (searchInput !== "") {
-      searchProducts(true);
+      searchProducts(true, true);
     } else {
       setSearchInput("");
       getAllData();
