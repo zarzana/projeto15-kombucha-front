@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Swal from "sweetalert2"
 import CartProduct from "../components/CartProduct"
 import { ProductsContext } from "../contexts/productsContext"
 import { UserContext } from "../contexts/userContext"
@@ -68,7 +69,21 @@ const CartPage = () => {
     async function Confirm(){
         try {
             await axios.post(`${import.meta.env.VITE_API_URL}/cart`,{list:prods},config)
-            navigate("/checkout")
+            Swal.fire({
+                title: '<span style=";font-size: 18px">Deseja voltar e ver mais produtos ou fazer a compra agora?</span>',
+                width: 320,
+                showDenyButton: true,
+                confirmButtonText: 'Comprar',
+                denyButtonText: 'Voltar',
+                confirmButtonColor: '#5dbb63',
+                denyButtonColor: 'lightgrey',
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/checkout');
+                } else if (result.isDenied) {
+                    navigate('/');
+                }
+            })
         } catch ({response: {status, statusText, data}}){
             alert(`${status} ${statusText}\n${data}`);
         }
