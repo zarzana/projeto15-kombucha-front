@@ -18,9 +18,8 @@ const SignUpPage = () => {
     e.preventDefault();
 
     if (confirmPassword !== signUpInputs.password) return alert("As senhas precisam ser iguais");
-    setLoading(true);
-
     try {
+      setLoading(true);
       await axios.post(`${import.meta.env.VITE_API_URL}/sign-up`, signUpInputs);
       Swal.fire({
         title: `<span style=";font-size: 18px">Conta cadastrada com sucesso!</span>`,

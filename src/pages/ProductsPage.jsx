@@ -46,8 +46,8 @@ const ProductsPage = () => {
     });
   };
   const getProductsData = async () => {
-    setLoading(true);
     try {
+      setLoading(true);
       const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products?page=${pageCounter}&qtd=${qtd}`);
       setProducts(data);
       changeRemainingProducts(data);
