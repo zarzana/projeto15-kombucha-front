@@ -56,7 +56,8 @@ const ProductsPage = () => {
   };
 
   const [searchInput, setSearchInput] = useState("");
-  const searchProducts = async (search, useEffect) => {
+  const searchProducts = async (e, search, useEffect) => {
+    if (e) e.preventDefault();
     if (!search) {
       setSearchInput("");
 
@@ -81,7 +82,7 @@ const ProductsPage = () => {
 
   useEffect(() => {
     if (searchInput !== "") {
-      searchProducts(true, true);
+      searchProducts(undefined, true, true);
     } else {
       setSearchInput("");
       getAllData();
@@ -95,13 +96,13 @@ const ProductsPage = () => {
 
   return (  
     <ProductsPageBody>
-      <form>
+      <form onSubmit={e => searchProducts(e, true, false)}>
         <input placeholder="Buscar produtos..."
           value={searchInput}
           onChange={e => setSearchInput(e.target.value)}
         ></input>
-        <button type="button" onClick={() => searchProducts(true)}><StyledSearch/></button>
-        <button type="button" onClick={() => searchProducts(false)}><StyledResetSearch/></button>
+        <button><StyledSearch/></button>
+        <button type="button" onClick={() => searchProducts(undefined, false, false)}><StyledResetSearch/></button>
       </form>
       {(Object.keys(products).length !== 0) 
         &&

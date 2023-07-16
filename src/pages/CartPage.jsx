@@ -92,7 +92,6 @@ const CartPage = () => {
                 </ProductsCardHeader>
                 {!prods||prods.length==0?"":<button onClick={()=>Confirm()}>Confirmar</button>}
             </ProductsCard>
-            <p onClick={() => navigate('/')}>Voltar</p>
         </PageBody>
     )
 }
