@@ -8,6 +8,7 @@ import { UserContext } from "../contexts/userContext"
 import { PageBody, ProductCardInfo, ProductsCard, ProductsCardContent, ProductsCardHeader } from "../style/CartBody"
 
 const CartPage = () => {
+    const [loading, setLoading] = useState(false);
     const {config} = useContext(UserContext)  
     const {setCartProducts} = useContext(ProductsContext)  
     const [prods,setProds] = useState()
@@ -23,7 +24,11 @@ const CartPage = () => {
             } catch ({response: {status, statusText, data}}){
                 const errors = `${status} ${statusText}\n${data}`;
                 if (status === 401) return console.log(errors)
-                alert(errors);
+                Swal.fire({
+                    title: `<span style=";font-size: 18px">${errors}</span>`,
+                    width: 320,
+                    confirmButtonColor: '#5dbb63',
+                });
             }
         }
         fetchData();
@@ -58,7 +63,11 @@ const CartPage = () => {
             const cartData = await axios.get(`${import.meta.env.VITE_API_URL}/cart`, config);
             setCartProducts(cartData.data);
         } catch ({response: {status, statusText, data}}){
-            alert(`${status} ${statusText}\n${data}`);
+            Swal.fire({
+                title: `<span style=";font-size: 18px">${status} ${statusText}\n${data}</span>`,
+                width: 320,
+                confirmButtonColor: '#5dbb63',
+            });
         }
     }
 
@@ -68,6 +77,7 @@ const CartPage = () => {
 
     async function Confirm(){
         try {
+            setLoading(true);
             await axios.post(`${import.meta.env.VITE_API_URL}/cart`,{list:prods},config)
             Swal.fire({
                 title: '<span style=";font-size: 18px">Deseja voltar e ver mais produtos ou fazer a compra agora?</span>',
@@ -84,8 +94,14 @@ const CartPage = () => {
                     navigate('/');
                 }
             })
+            setLoading(false);
         } catch ({response: {status, statusText, data}}){
-            alert(`${status} ${statusText}\n${data}`);
+            setLoading(false);
+            Swal.fire({
+                title: `<span style=";font-size: 18px">${status} ${statusText}\n${data}</span>`,
+                width: 320,
+                confirmButtonColor: '#5dbb63',
+            });
         }
     }
 
@@ -105,7 +121,7 @@ const CartPage = () => {
                     <>Total</>
                     <b>R$ {total?total.toFixed(2).replace('.',','):""}</b>
                 </ProductsCardHeader>
-                {!prods||prods.length==0?"":<button onClick={()=>Confirm()}>Confirmar</button>}
+                {!prods||prods.length==0?"":<button disabled={loading} onClick={()=>Confirm()}>{loading? 'Carregando...' : 'Confirmar'}</button>}
             </ProductsCard>
         </PageBody>
     )

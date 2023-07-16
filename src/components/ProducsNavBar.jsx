@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { ProductsContext } from "../contexts/productsContext";
 import { UserContext } from "../contexts/userContext";
 import { ProductsPageNavBar, StyledArrow, StyledCart } from "../style/ProductsPageBody";
@@ -12,17 +13,35 @@ const ProductsNavBar = () => {
   const { name, config } = useContext(UserContext);
   const { cartProducts } = useContext(ProductsContext);
 
-  const signOut = async () => {
-    if (!confirm('Tem certeza que deseja sair?')) return;
-
+  const confirmSignOut = async () => {
     try {
       await axios.delete(`${import.meta.env.VITE_API_URL}/sign-out`, config);
       localStorage.removeItem('config');
       localStorage.removeItem('name');
       window.location.reload();
     } catch ({response: {status, statusText, data}}){
-      alert(`${status} ${statusText}\n${data}`);
+      Swal.fire({
+        title: `<span style=";font-size: 18px">${status} ${statusText}\n${data}</span>`,
+        width: 320,
+        confirmButtonColor: '#5dbb63',
+      });
     }
+  }
+
+  const signOut = () => {
+    Swal.fire({
+      title: '<span style=";font-size: 18px">Tem Certeza que deseja sair?</span>',
+      width: 320,
+      showCancelButton: true,
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não',
+      confirmButtonColor: '#FF5C5C',
+      denyButtonColor: 'lightgrey',
+      }).then((result) => {
+      if (result.isConfirmed) {
+        confirmSignOut();
+      }
+    })
   };
 
   return (

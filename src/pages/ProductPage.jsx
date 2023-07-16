@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ProductsContext } from "../contexts/productsContext";
 import { UserContext } from "../contexts/userContext";
@@ -14,6 +14,8 @@ const ProductPage = () => {
 
   const { name, config } = useContext(UserContext);
   const { cartProducts, setCartProducts } = useContext(ProductsContext);
+
+  const [loading, setLoading] = useState(false);
 
   const isInCart = cartProducts.some(product => product._id === _id);
 
@@ -31,8 +33,10 @@ const ProductPage = () => {
           </div>
           <p>{description}</p>
           <p><span>no estoque: {stock}</span></p>
-          <button onClick={() => addToCart(import.meta.env.VITE_API_URL, name, config, _id, stock, isInCart, cartProducts, setCartProducts)}>
-            {isInCart ? <h3>Remover do Carrinho</h3> : <h3>Adicionar ao Carrinho</h3>}
+          <button 
+            disabled={loading}
+            onClick={() => addToCart(import.meta.env.VITE_API_URL, name, config, _id, stock, isInCart, cartProducts, setCartProducts, setLoading)}
+          >{loading ? <h3>Carregando...</h3> : (isInCart) ? <h3>Remover do Carrinho</h3> : <h3>Adicionar ao Carrinho</h3>}
             <AddRmCart />
           </button>
         </div>

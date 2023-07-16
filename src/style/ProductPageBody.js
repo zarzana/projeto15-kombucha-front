@@ -90,6 +90,10 @@ export const ProductPageBody = styled.div`
           opacity: 0.9;
           }
         }
+        &:disabled{
+          cursor: default;
+          opacity: 0.5;
+        }
       }
     }
   p:last-child{

@@ -26,6 +26,9 @@ export const ProductsCard = styled.div`
     }
     button{
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: white;
         background-color: #64C172;
         border-radius: 4px;
@@ -35,6 +38,10 @@ export const ProductsCard = styled.div`
         transition-duration: 400ms;
         &:hover{
                 opacity: 0.9;
+        }
+        &:disabled{
+            cursor: default;
+            opacity: 0.5;
         }
     }
 `
@@ -61,10 +68,17 @@ export const ProductsCardContent = styled.div`
     
     button{
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: #FF5C5C;
         transition-duration: 400ms;
         &:hover{
             opacity: 0.9;
+        }
+        &:disabled{
+            cursor: default;
+            opacity: 0.5;
         }
     }
 `
@@ -107,6 +121,10 @@ export const ProductCardInfo = styled.div`
             transition-duration: 400ms;
             &:hover{
                 opacity: 0.9;
+            }
+            &:disabled{
+                cursor: default;
+                opacity: 0.5;
             }
         }
         button:disabled{

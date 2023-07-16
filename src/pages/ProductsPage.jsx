@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useContext, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import ProductCard from "../components/Product";
 import { ProductsContext } from "../contexts/productsContext";
 import { UserContext } from "../contexts/userContext";
-import { NavigateButtons, ProductsPageBody, StyledResetSearch, StyledSearch } from "../style/ProductsPageBody";
+import { LoadingBody, NavigateButtons, ProductsPageBody, StyledResetSearch, StyledSearch } from "../style/ProductsPageBody";
 const qtd = 6;
 
 const ProductsPage = () => {
@@ -12,6 +12,7 @@ const ProductsPage = () => {
   const { config } = useContext(UserContext);
   const { setCartProducts } = useContext(ProductsContext);
 
+  const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState({});
 
   const searched = useRef(false);
@@ -45,13 +46,20 @@ const ProductsPage = () => {
     });
   };
   const getProductsData = async () => {
+    setLoading(true);
     try {
       const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products?page=${pageCounter}&qtd=${qtd}`);
       setProducts(data);
       changeRemainingProducts(data);
       window.scrollTo({ top: 0,behavior: 'smooth' });
+      setLoading(false);
     } catch ({response: {status, statusText, data}}){
-      alert(`${status} ${statusText}\n${data}`);
+      setLoading(false);
+      Swal.fire({
+        title: `<span style=";font-size: 18px">${status} ${statusText}\n${data}</span>`,
+        width: 320,
+        confirmButtonColor: '#5dbb63',
+      });
     }
   };
 
@@ -67,15 +75,22 @@ const ProductsPage = () => {
     } else {
       try {
         if (searchInput === "") return;
+        setLoading(true);
         if (!useEffect) setPageCounter(1);
         const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products?category=${searchInput}&page=${useEffect ? pageCounter : 1}&qtd=${qtd}`);
         if (data.count === 0) setPageCounter(1);
         setProducts(data);
         changeRemainingProducts(data);
         searched.current = true;
+        setLoading(false);
   
       } catch ({response: {status, statusText, data}}){
-        alert(`${status} ${statusText}\n${data}`);
+        setLoading(false);
+        Swal.fire({
+          title: `<span style=";font-size: 18px">${status} ${statusText}\n${data}</span>`,
+          width: 320,
+          confirmButtonColor: '#5dbb63',
+        });
       }
     }
   };
@@ -94,15 +109,22 @@ const ProductsPage = () => {
     setPageCounter(previous => previous + (right ? 1 : -1)); 
   };
 
+  if (Object.keys(products).length === 0) return (
+    <LoadingBody><p>Carregando...</p></LoadingBody>
+  )
   return (  
     <ProductsPageBody>
       <form onSubmit={e => searchProducts(e, true, false)}>
         <input placeholder="Buscar produtos..."
+          disabled={loading}
           value={searchInput}
           onChange={e => setSearchInput(e.target.value)}
         ></input>
-        <button><StyledSearch/></button>
-        <button type="button" onClick={() => searchProducts(undefined, false, false)}><StyledResetSearch/></button>
+        <button disabled={loading}><StyledSearch/></button>
+        <button disabled={loading} type="button" onClick={() => 
+          searchProducts(undefined, false, false)}
+        ><StyledResetSearch/>
+        </button>
       </form>
       {(Object.keys(products).length !== 0) 
         &&

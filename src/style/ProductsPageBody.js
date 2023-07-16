@@ -22,9 +22,9 @@ export const ProductsPageBody = styled.div`
       width: 290px;
       border-radius: 8px 0 0 8px;
       &:disabled{
-            cursor: default;
-            opacity: 0.5;
-            background: #F2F2F2;
+        cursor: default;
+        opacity: 0.5;
+        background: #F2F2F2;
       }
       &::placeholder{
         color: #DBDBDB;
@@ -45,6 +45,10 @@ export const ProductsPageBody = styled.div`
       transition-duration: 400ms;
       &:hover{
         background-color: #5dbb63;
+      }
+      &:disabled{
+        cursor: default;
+        opacity: 0.5;
       }
     }
   }
@@ -168,9 +172,26 @@ export const StyledProductCard = styled.li`
       &:hover{
         opacity: 0.9;
       }
+      &:disabled{
+        cursor: default;
+        opacity: 0.5;
+      }
     }
   }
 `
+export const LoadingBody = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  p{
+    color: lightgray;
+    font-size: 24px;
+    font-weight: 700;
+  }
+`;
+
 export const ProductsPageNavBar = styled.div`
   font-family: 'Lexend Deca', sans-serif;
   z-index: 2;
