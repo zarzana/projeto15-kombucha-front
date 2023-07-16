@@ -55,11 +55,7 @@ const ProductsPage = () => {
       setLoading(false);
     } catch ({response: {status, statusText, data}}){
       setLoading(false);
-      Swal.fire({
-        title: `<span style=";font-size: 18px">${status} ${statusText}\n${data}</span>`,
-        width: 320,
-        confirmButtonColor: '#5dbb63',
-      });
+      console.log(`${status} ${statusText}\n${data}`);
     }
   };
 
