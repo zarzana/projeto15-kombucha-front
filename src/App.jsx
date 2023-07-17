@@ -4,11 +4,11 @@ import ProductsNavBar from "./components/ProducsNavBar";
 import { ProductsContext } from "./contexts/productsContext";
 import { UserContext } from "./contexts/userContext";
 import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
 import ProductPage from "./pages/ProductPage";
 import ProductsPage from "./pages/ProductsPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
-import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
 
@@ -43,7 +43,7 @@ function App() {
       name: !storedName.current ? name : storedName.current
     }}>
     <ProductsContext.Provider value={{cartProducts, setCartProducts}}>
-      {(pathname !== '/entrar' && pathname !== '/cadastro' && pathname !== '/carrinho') 
+      {(pathname !== '/entrar' && pathname !== '/cadastro' && pathname !== '/carrinho' && pathname !== '/checkout') 
         && <ProductsNavBar />
       }
       <Routes>

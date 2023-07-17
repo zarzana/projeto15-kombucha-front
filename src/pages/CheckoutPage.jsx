@@ -110,6 +110,7 @@ const CheckoutPage = () => {
                     <button disabled={loading} >{loading ? 'Carregando...' : 'Confirmar'}</button>
                 </form>
             </FormDiv>
+            <h3 onClick={() => navigate('/carrinho')}>Voltar</h3>
         </PageBody>
     )
 }

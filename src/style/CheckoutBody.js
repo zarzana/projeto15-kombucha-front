@@ -1,6 +1,15 @@
 import styled from "styled-components"
 
 export const PageBody = styled.div`
+    h3{
+        cursor: pointer;
+        margin-top: 10px;
+        color: black;
+        transition-duration: 400ms;
+        &:hover{
+            color: #FF2E2E;
+        }
+    }
     display: flex;
     flex-direction: column;
     align-items: center;
