@@ -29,6 +29,22 @@ export const FormDiv = styled.div`
             gap:5px;
         }
 
+        input{
+            padding-left: 6px;
+            user-select: text;
+            background: #FFFFFF;
+            border: 1px solid #D5D5D5;
+            font-size: 17px;
+            line-height: 21px;
+            color: #666666;
+            border-radius: 8px;
+            &:disabled{
+                cursor: default;
+                opacity: 0.5;
+                background: #F2F2F2;
+            }
+        }
+
         button{
             cursor: pointer;
             display: flex;
@@ -38,7 +54,7 @@ export const FormDiv = styled.div`
             background-color: #64C172;
             border-radius: 4px;
             border-style: none;
-            height: 100%;
+            height: 32px;
             font-size: 17px;
             transition-duration: 400ms;
             &:hover{

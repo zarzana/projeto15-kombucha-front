@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { SignBody } from "../style/SignBody";
+import { Logo, SignBody } from "../style/SignBody";
 
 const SignUpPage = () => {
 
@@ -39,6 +39,7 @@ const SignUpPage = () => {
 
   return (  
     <SignBody>
+      <Logo>Kombucha Shop</Logo>
       <form onSubmit={signUp}>
         <input type="text" placeholder="nome" required
           disabled={loading}

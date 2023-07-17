@@ -144,3 +144,19 @@ export const ProductCardInfo = styled.div`
         }
     }
 `
+
+export const ConfirmButton = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    background-color: #5dbb63;
+    color: white;
+    &:hover{
+        opacity: 0.9;
+    }
+    &:disabled{
+        cursor: default;
+        opacity: 0.5;
+    }
+`

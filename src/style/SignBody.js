@@ -75,3 +75,12 @@ export const SignBody = styled.div`
     color: #5dbb63;
   }
 `
+
+export const Logo = styled.h1`
+  word-break: normal;
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 1000;
+  font-size: 50px;
+  color: #5dbb63;
+`;

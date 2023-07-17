@@ -5,7 +5,7 @@ import Swal from "sweetalert2"
 import CartProduct from "../components/CartProduct"
 import { ProductsContext } from "../contexts/productsContext"
 import { UserContext } from "../contexts/userContext"
-import { PageBody, ProductCardInfo, ProductsCard, ProductsCardContent, ProductsCardHeader } from "../style/CartBody"
+import { ConfirmButton, PageBody, ProductCardInfo, ProductsCard, ProductsCardContent, ProductsCardHeader } from "../style/CartBody"
 
 const CartPage = () => {
     const [loading, setLoading] = useState(false);
@@ -121,7 +121,7 @@ const CartPage = () => {
                     <>Total</>
                     <b>R$ {total?total.toFixed(2).replace('.',','):""}</b>
                 </ProductsCardHeader>
-                {!prods||prods.length==0?"":<button disabled={loading} onClick={()=>Confirm()}>{loading? 'Carregando...' : 'Confirmar'}</button>}
+                {!prods||prods.length==0?"":<ConfirmButton disabled={loading} onClick={()=>Confirm()}>{loading? 'Carregando...' : 'Confirmar'}</ConfirmButton>}
             </ProductsCard>
         </PageBody>
     )

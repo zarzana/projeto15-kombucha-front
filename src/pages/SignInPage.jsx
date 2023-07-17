@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { UserContext } from "../contexts/userContext";
-import { SignBody } from "../style/SignBody";
+import { Logo, SignBody } from "../style/SignBody";
 
 const signInPage = () => {
   
@@ -40,6 +40,7 @@ const signInPage = () => {
 
   return (  
     <SignBody>
+      <Logo>Kombucha Shop</Logo>
       <form onSubmit={signIn}>
         <input type="email" placeholder="email" required
           disabled={loading}
