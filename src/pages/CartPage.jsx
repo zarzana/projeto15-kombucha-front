@@ -23,13 +23,15 @@ const CartPage = () => {
                 setProds(l)
             } catch ({response: {status, statusText, data}}){
                 const errors = `${status} ${statusText}\n${data}`;
-                if (status === 401) return console.log(errors)
+                if (status === 401) {
+                    setProds([]);
+                    return console.log(errors);
+                }
                 Swal.fire({
                     title: `<span style=";font-size: 18px">${errors}</span>`,
                     width: 320,
                     confirmButtonColor: '#5dbb63',
                 });
-                setProds([]);
             }
         }
         fetchData();
