@@ -101,6 +101,7 @@ const ProductsPage = () => {
   }, [pageCounter]);
 
   const navigateBetween = (right) => {
+    if (loading) return;
     setRemainingProducts(previous => previous + (right ? -qtd : qtd));
     setPageCounter(previous => previous + (right ? 1 : -1)); 
   };
@@ -137,18 +138,18 @@ const ProductsPage = () => {
                 <ProductCard product={product} key={product._id}/>)
               }
           </ul>
-          <NavigateButtons>
+          <NavigateButtons loading={loading}>
             <>
               {pageCounter !== 1  
               && 
                 <div onClick={() => navigateBetween(false)}>
-                  <p>{'<'}<span>{pageCounter-1}</span></p>
+                  <p>{loading ? '...' : '<'}<span>{pageCounter-1}</span></p>
                 </div>
               }
               {remainingProducts - qtd > 0
               &&
                 <div onClick={() => navigateBetween(true)}>
-                  <p><span>{pageCounter+1}</span>{`>`}</p>
+                  <p><span>{pageCounter+1}</span>{loading ? '...' : `>`}</p>
                 </div>
               }
             </>

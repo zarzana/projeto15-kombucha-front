@@ -94,17 +94,17 @@ export const NavigateButtons = styled.div`
       font-size: 24px;
       text-align: center;
     }
-    cursor: pointer;
+    cursor: ${({ loading }) => loading ? 'default' : 'pointer'};
+    opacity: ${({ loading }) => loading ? '0.7' : '1.0'};
     width: 30px;
     height: 30px;
     border-radius: 100%;
-    background-color: red;
     background-color: lightgrey;
     color: black;
     transition-duration: 400ms;
     &:hover{
-      background-color: #5dbb63;
-      color: white;
+      background-color: ${({ loading }) => loading ? 'lightgrey' : '#5dbb63'};
+      color: ${({ loading }) => loading ? 'black' : 'white'};
     }
   }
 `
@@ -155,6 +155,8 @@ export const StyledProductCard = styled.li`
       margin-left: 2px;
       font-weight: 500;
       margin-bottom: 2px;
+      font-size: 16px;
+      line-height: 20px;
       span{
         color: lightgray;
       }
@@ -241,7 +243,7 @@ export const ProductsPageNavBar = styled.div`
       white-space: nowrap;
       font-weight: 500;
       font-size: 20px;
-      line-height: 30;
+      line-height: 30px;
     }
   }
 `
