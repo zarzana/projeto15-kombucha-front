@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 
 export const SignBody = styled.div`
   font-family: 'Lexend Deca', sans-serif;
+  background-color: #EDEDED;
   div{
     cursor: pointer;
     text-align: center;

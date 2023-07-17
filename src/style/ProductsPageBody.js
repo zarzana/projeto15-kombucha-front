@@ -8,6 +8,7 @@ export const ProductsPageBody = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #EDEDED;
   form{
     display: flex;
     margin-top: 70px;
@@ -112,7 +113,7 @@ export const StyledProductCard = styled.li`
   &:hover{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
-  background-color: white;
+  background-color: #EDEDED;
   box-sizing: content-box;
   border: 2px solid lightgray;
   border-radius: 8px;

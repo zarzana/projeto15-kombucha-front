@@ -6,6 +6,7 @@ export const ProductPageBody = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
+  background-color: #EDEDED;
   div:nth-child(1){
     margin-top: 90px;
     display: flex;
