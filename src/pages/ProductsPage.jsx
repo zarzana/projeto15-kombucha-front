@@ -143,13 +143,13 @@ const ProductsPage = () => {
               {pageCounter !== 1  
               && 
                 <div onClick={() => navigateBetween(false)}>
-                  <p>{loading ? '...' : '<'}<span>{pageCounter-1}</span></p>
+                  <p>{loading ? '...' : '<'}<span>{!loading && pageCounter-1}</span></p>
                 </div>
               }
               {remainingProducts - qtd > 0
               &&
                 <div onClick={() => navigateBetween(true)}>
-                  <p><span>{pageCounter+1}</span>{loading ? '...' : `>`}</p>
+                  <p><span>{!loading && pageCounter+1}</span>{loading ? '...' : `>`}</p>
                 </div>
               }
             </>

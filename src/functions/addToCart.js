@@ -1,8 +1,16 @@
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export const addToCart = async (URL, name, config, _id, stock, isInCart, cartProducts, setCartProducts, setLoading) => {
-  if (!name) return alert('Para adicionar produtos no carrinho você deve estar logado');
   if (stock < 1) return;
+  
+  if (!name) {
+    return Swal.fire({
+      title: `<span style=";font-size: 18px">Para adicionar produtos no carrinho você deve estar logado</span>`,
+      width: 320,
+      confirmButtonColor: '#5dbb63',
+    });
+  }
   
   try {
     setLoading(true);
@@ -18,6 +26,10 @@ export const addToCart = async (URL, name, config, _id, stock, isInCart, cartPro
     setLoading(false);
   } catch ({response: {status, statusText, data}}){
     setLoading(false);
-    alert(`${status} ${statusText}\n${data}`);
+    Swal.fire({
+      title: `<span style=";font-size: 18px">${status} ${statusText}\n${data}</span>`,
+      width: 320,
+      confirmButtonColor: '#5dbb63',
+    });
   }
 };
