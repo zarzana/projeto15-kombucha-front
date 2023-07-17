@@ -49,6 +49,9 @@ export const ProductsPageBody = styled.div`
       &:disabled{
         cursor: default;
         opacity: 0.5;
+        &:hover{
+          background-color: lightgrey;
+      }
       }
     }
   }

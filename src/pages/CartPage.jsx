@@ -11,7 +11,7 @@ const CartPage = () => {
     const [loading, setLoading] = useState(false);
     const {config} = useContext(UserContext)  
     const {setCartProducts} = useContext(ProductsContext)  
-    const [prods,setProds] = useState()
+    const [prods,setProds] = useState(null)
     const [total,setTotal] = useState()
     const navigate = useNavigate()
 
@@ -112,9 +112,10 @@ const CartPage = () => {
                     Produtos
                 </ProductsCardHeader>
                 {
-                    !prods||prods.length==0?<button onClick={()=>navigate("/")}>Procurar produtos</button>
+                    !prods||prods.length==0?<button onClick={()=>navigate("/")} disabled={prods === null}>Procurar produtos</button>
                     :prods.map(element => <CartProduct key={element._id} prod={element} deleteP={deleteProd} changeQ={changeQtd}/>)
                 }
+            <p>{prods === null && 'Carregando...'}</p>
             </ProductsCard>
             <ProductsCard>
                 <ProductsCardHeader>
