@@ -29,6 +29,7 @@ const CartPage = () => {
                     width: 320,
                     confirmButtonColor: '#5dbb63',
                 });
+                setProds([]);
             }
         }
         fetchData();
