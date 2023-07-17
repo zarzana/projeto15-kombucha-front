@@ -8,6 +8,7 @@ import ProductPage from "./pages/ProductPage";
 import ProductsPage from "./pages/ProductsPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
         <Route path="/entrar" element={ <SignInPage/> }/>
         <Route path="/cadastro" element={ <SignUpPage/> }/>
         <Route path="/carrinho" element={ <CartPage/> }/>
+        <Route path="/checkout" element={ <CheckoutPage/> }/>
       </Routes>
     </ProductsContext.Provider>
     </UserContext.Provider>
