@@ -6,6 +6,7 @@ export const PageBody = styled.div`
         margin-top: 10px;
         color: black;
         transition-duration: 400ms;
+        font-weight: 500;
         &:hover{
             color: #FF2E2E;
         }
@@ -21,6 +22,7 @@ export const PageBody = styled.div`
 `
 
 export const FormDiv = styled.div`
+    font-weight: 500;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -28,6 +30,7 @@ export const FormDiv = styled.div`
     padding: 8px 20px;
     border-radius: 6px;
     form{
+        font-weight: 500;
         display: flex;
         flex-direction: column;
         gap:10px;

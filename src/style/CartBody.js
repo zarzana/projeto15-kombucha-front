@@ -12,6 +12,9 @@ export const PageBody = styled.div`
 `
 
 export const ProductsCard = styled.div`
+    p {
+        font-weight: 500;
+    }
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,6 +50,7 @@ export const ProductsCard = styled.div`
 `
 
 export const ProductsCardHeader = styled.div`
+    font-weight: 500;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -56,6 +60,7 @@ export const ProductsCardHeader = styled.div`
 `
 
 export const ProductsCardContent = styled.div`
+    font-weight: 500;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -84,6 +89,7 @@ export const ProductsCardContent = styled.div`
 `
 
 export const ProductCardInfo = styled.div`
+    font-weight: 500;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
