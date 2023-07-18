@@ -155,7 +155,7 @@ export const ConfirmButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 145px;
     background-color: #5dbb63;
     color: white;
     &:hover{

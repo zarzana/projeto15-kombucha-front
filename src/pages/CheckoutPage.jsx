@@ -10,25 +10,24 @@ const CheckoutPage = () => {
     
     const [loading, setLoading] = useState(false);
     const [endereco,setEndereco] = useState({logradouro:"",bairro:"",localidade:"",uf:"",numero:"",nome:"",complemento:""})
+    const [cpfInput, setCpfInput] = useState("");
     const navigate = useNavigate()
 
     function validateCEP(value){
         const v = value.replace(/[^0-9]/g,'')
         if(v.length == 8){
             axios.get(`https://viacep.com.br/ws/${v}/json/`)
-            .then(resp=>{
-                delete resp.data.ddd
-                delete resp.data.gia
-                delete resp.data.ibge
-                delete resp.data.siafi
-                if (resp.data.erro){
+            .then(({ data: { cep, uf, localidade, erro } } )=>{
+                if (erro){
+                    setCpfInput("");
+                    setEndereco({...endereco, localidade: "", uf: ""});
                     Swal.fire({
                         title: `<span style=";font-size: 18px">CEP invalido</span>`,
                         width: 320,
                         confirmButtonColor: '#5dbb63',
                     });
                 } else {
-                    setEndereco({...endereco,...resp.data});
+                    setEndereco({...endereco,localidade, uf, cep});
                 }
             })
             .catch(() => {
@@ -81,7 +80,10 @@ const CheckoutPage = () => {
                     </label>
                     <label>
                         CEP
-                        <input type="text" disabled={false} onInput={e=>e.target.value = validateCEP(e.target.value)} maxLength={8} required/>
+                        <input type="text" disabled={false} required value={cpfInput} onChange={e=>setCpfInput(e.target.value)} 
+                            onInput={e=>e.target.value = validateCEP(e.target.value)}
+                            maxLength={8}
+                        />
                     </label>
                     <label>
                         Estado

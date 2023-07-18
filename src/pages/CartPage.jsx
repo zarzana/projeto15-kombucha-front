@@ -125,7 +125,7 @@ const CartPage = () => {
                     <>Total</>
                     <b>R$ {total?total.toFixed(2).replace('.',','):""}</b>
                 </ProductsCardHeader>
-                {!prods||prods.length==0?"":<ConfirmButton disabled={loading} onClick={()=>Confirm()}>{loading? 'Carregando...' : 'Confirmar'}</ConfirmButton>}
+                {!prods||prods.length==0?"":<ConfirmButton disabled={loading} onClick={()=>Confirm()}>{loading? 'Carregando...' : 'Salvar Carrinho'}</ConfirmButton>}
             </ProductsCard>
         </PageBody>
     )
