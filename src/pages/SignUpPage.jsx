@@ -17,7 +17,13 @@ const SignUpPage = () => {
   const signUp = async (e) => {
     e.preventDefault();
 
-    if (confirmPassword !== signUpInputs.password) return alert("As senhas precisam ser iguais");
+    if (signUpInputs.confirmPassword !== signUpInputs.password) {
+      return Swal.fire({
+        title: `<span style=";font-size: 18px">As senhas precisam ser iguais!</span>`,
+        width: 320,
+        confirmButtonColor: '#5dbb63',
+      });
+    }
     try {
       setLoading(true);
       await axios.post(`${import.meta.env.VITE_API_URL}/sign-up`, signUpInputs);
